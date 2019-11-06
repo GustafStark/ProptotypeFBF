@@ -1,0 +1,92 @@
+﻿@model IEnumerable<WebApplication1.Models.GamesModel>
+
+@{
+    ViewData["Title"] = "List";
+
+}
+<br />
+@{
+
+    if (ViewBag.Test is GamesModelData SuperTest)
+    {
+        @*foreach (var item in SuperTest.GamesModels)
+            {
+                <p>@item.Name</p>
+            }*@
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.YearPublished)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Thumbnail)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in SuperTest.GamesModels)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YearPublished)
+                    </td>
+                    <td>
+                     <img width="50" height=" 50" src="@Html.DisplayFor(modelItem => item.Thumbnail)"/>  
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+
+
+}
+ViewBag.Test
+@{
+    if (Model != null)
+    {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Rank)*@
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Rank)*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    }
+}
